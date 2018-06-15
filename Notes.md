@@ -1,11 +1,10 @@
 
 # Section 3: Security
 
-## The Repository Pattern
+## 25 - The Repository Pattern
 ### Formal Definition
 The repository mediates between the data source layer and the business layers of the applciation. It queries the data source for the data, maps the data from the data source to a business entity, and persists changes in the business entity to the data source. A repository separates the business logic from the interactions with the underlying data source or Web service.
 
-### Notes
 * Controllers are strongly tied to the Db, which make them less manageable if Db changes
 * the current setup uses the Entity Framework as a level of abstraction between controllers and Db
 * current setup: Kestrel => Controller => DbContext => EntityFramework => Database
@@ -17,3 +16,7 @@ The repository mediates between the data source layer and the business layers of
   * decouples appication from persistence framework (in case it ever changes)
   * all Db queries are in the same place
   * promotes testability ()
+
+## 26. Creating an Interface for the Repository
+
+* interface names start with an "I"
