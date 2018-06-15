@@ -1,10 +1,11 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-
+// NGRX
+import { Store, select } from '@ngrx/store';
 import * as fromRoot from '../store';
-import { Store } from '@ngrx/store';
+// RXJS
 import { Observable } from 'rxjs';
+// MODELS
 import { Value } from '../models';
-import { select } from '@ngrx/store';
 
 @Component({
   selector: 'app-value',
