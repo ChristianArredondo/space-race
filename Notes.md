@@ -20,3 +20,5 @@ The repository mediates between the data source layer and the business layers of
 ## 26. Creating an Interface for the Repository
 
 * interface names start with an "I"
+
+## 27. Creating the concrete AuthRepository
