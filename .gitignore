@@ -1,4 +1,4 @@
-/DatingApp.API/bin
-/DatingApp.API/obj
+**/bin
+**/obj
 .vscode
-*.db
+**/*.db
