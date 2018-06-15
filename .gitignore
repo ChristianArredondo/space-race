@@ -3,7 +3,6 @@
 DatingApp.API/bin
 DatingApp.API/obj
 DatingApp.API/*.db
-.vscode
 
 # ------------ CLIENT ------------
 
@@ -14,22 +13,6 @@ DatingAppSPA/out-tsc
 
 # dependencies
 DatingAppSPA/node_modules
-
-# IDEs and editors
-/.idea
-.project
-.classpath
-.c9/
-*.launch
-.settings/
-*.sublime-workspace
-
-# IDE - VSCode
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
 
 # misc
 DatingAppSPA/.sass-cache
@@ -44,3 +27,12 @@ DatingAppSPA/typings
 # System Files
 .DS_Store
 Thumbs.db
+
+
+# ------------ IDE - VSCode ------------
+
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
