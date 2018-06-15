@@ -1,0 +1,11 @@
+/Users/christianarredondo/Documents/Web Applications/dating-app-dot-net/DatingApp.API/bin/Debug/netcoreapp2.0/DatingApp.API.deps.json
+/Users/christianarredondo/Documents/Web Applications/dating-app-dot-net/DatingApp.API/bin/Debug/netcoreapp2.0/DatingApp.API.runtimeconfig.json
+/Users/christianarredondo/Documents/Web Applications/dating-app-dot-net/DatingApp.API/bin/Debug/netcoreapp2.0/DatingApp.API.runtimeconfig.dev.json
+/Users/christianarredondo/Documents/Web Applications/dating-app-dot-net/DatingApp.API/bin/Debug/netcoreapp2.0/DatingApp.API.dll
+/Users/christianarredondo/Documents/Web Applications/dating-app-dot-net/DatingApp.API/bin/Debug/netcoreapp2.0/DatingApp.API.pdb
+/Users/christianarredondo/Documents/Web Applications/dating-app-dot-net/DatingApp.API/obj/Debug/netcoreapp2.0/DatingApp.API.csprojAssemblyReference.cache
+/Users/christianarredondo/Documents/Web Applications/dating-app-dot-net/DatingApp.API/obj/Debug/netcoreapp2.0/DatingApp.API.csproj.CoreCompileInputs.cache
+/Users/christianarredondo/Documents/Web Applications/dating-app-dot-net/DatingApp.API/obj/Debug/netcoreapp2.0/DatingApp.API.AssemblyInfoInputs.cache
+/Users/christianarredondo/Documents/Web Applications/dating-app-dot-net/DatingApp.API/obj/Debug/netcoreapp2.0/DatingApp.API.AssemblyInfo.cs
+/Users/christianarredondo/Documents/Web Applications/dating-app-dot-net/DatingApp.API/obj/Debug/netcoreapp2.0/DatingApp.API.dll
+/Users/christianarredondo/Documents/Web Applications/dating-app-dot-net/DatingApp.API/obj/Debug/netcoreapp2.0/DatingApp.API.pdb
