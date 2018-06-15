@@ -57,3 +57,13 @@ JWT Structure
 ## 33. Creating the Login Method in the API
 
 ## 34. Using the Authentication Middleware
+
+## 35. Summary
+* created User class
+* created new migration for Users
+* learned about Repository
+* created IAuthRepository with 3 methods: `Register()`, `Login()`, `UserExists()`
+* added User class to DataContext so EntityFramework could create new Users table in Db
+* created AuthController with `login()` and `register()` methods
+* added auth protection to ValuesController
+* added Authentication middleware to Startup class
