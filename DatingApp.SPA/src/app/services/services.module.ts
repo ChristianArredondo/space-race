@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 
 import { ApiValuesService } from './api-values.service';
+import { AuthService } from './auth.service';
 
 @NgModule({
   imports: [
@@ -10,6 +11,6 @@ import { ApiValuesService } from './api-values.service';
     HttpClientModule
   ],
   declarations: [],
-  providers: [ApiValuesService]
+  providers: [ApiValuesService, AuthService]
 })
 export class ServicesModule { }
