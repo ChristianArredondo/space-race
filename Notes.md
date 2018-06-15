@@ -55,3 +55,5 @@ JWT Structure
   * used to encode/hash token
 
 ## 33. Creating the Login Method in the API
+
+## 34. Using the Authentication Middleware
