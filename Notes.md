@@ -22,3 +22,11 @@ The repository mediates between the data source layer and the business layers of
 * interface names start with an "I"
 
 ## 27. Creating the concrete AuthRepository
+
+## 28. Registering Services in the Startup Class
+
+* 3 options for registering AuthRepository as a service
+  * `AddTransient()` - creates new instance any time class is requested
+  * `AddScoped()` - creates new instance for each Http request
+  * `AddSingleton()` gives the service the same lifetime as the application (can cause concurrency problems)
+* use `AddScoped()`
