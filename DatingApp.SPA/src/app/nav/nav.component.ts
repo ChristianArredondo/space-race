@@ -1,4 +1,5 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, Input, HostBinding, Output, EventEmitter } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-nav',
@@ -6,11 +7,12 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   styleUrls: ['./nav.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class NavComponent implements OnInit {
+export class NavComponent {
+  @HostBinding('class.app-nav') cssClass = true;
+  @Input() authForm: FormGroup;
+  @Output() login: EventEmitter<void>;
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor() {
+    this.login = new EventEmitter();
   }
-
 }

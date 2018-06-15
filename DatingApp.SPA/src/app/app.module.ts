@@ -1,7 +1,9 @@
+// CORE ANGULAR
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
-// CORE
+// CORE PROJECT
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
 import { ServicesModule } from './services';
@@ -25,6 +27,8 @@ import { ValueComponent } from './value/value.component';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     StoreModule.forRoot(reducers, { metaReducers }),
     EffectsModule.forRoot([ValueEffects]),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
