@@ -31,8 +31,8 @@ Thumbs.db
 
 # ------------ IDE - VSCode ------------
 
-DatingApp.API/.vscode/*
-DatingApp.API/!.vscode/settings.json
-DatingApp.API/!.vscode/tasks.json
-DatingApp.API/!.vscode/launch.json
-DatingApp.API/!.vscode/extensions.json
+**/.vscode/*
+**/!.vscode/settings.json
+**/!.vscode/tasks.json
+**/!.vscode/launch.json
+**/!.vscode/extensions.json
