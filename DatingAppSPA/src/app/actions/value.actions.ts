@@ -1,5 +1,4 @@
 import { Action } from '@ngrx/store';
-import { Update } from '@ngrx/entity';
 import { Value } from '../models';
 
 export enum ValueActionTypes {
@@ -13,7 +12,7 @@ export class LoadValues implements Action {
 
 export class LoadValuesSuccess implements Action {
   readonly type = ValueActionTypes.LoadValuesSuccess;
-  constructor(public payload: { values: Value[] }) {}
+  constructor(public payload: Value[] ) {}
 }
 
 export type ValueActions = LoadValues | LoadValuesSuccess;

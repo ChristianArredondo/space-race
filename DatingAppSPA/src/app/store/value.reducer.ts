@@ -18,7 +18,7 @@ export function reducer(
 ): State {
   switch (action.type) {
     case ValueActionTypes.LoadValuesSuccess: {
-      return adapter.addAll(action.payload.values, state);
+      return adapter.addAll(action.payload, state);
     }
     default: {
       return state;
