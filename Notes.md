@@ -30,3 +30,7 @@ The repository mediates between the data source layer and the business layers of
   * `AddScoped()` - creates new instance for each Http request
   * `AddSingleton()` gives the service the same lifetime as the application (can cause concurrency problems)
 * use `AddScoped()`
+
+## 29. Creating the Register Method in our Auth Controller
+
+## 30. Using DTOs (Data Transfer Objects)
