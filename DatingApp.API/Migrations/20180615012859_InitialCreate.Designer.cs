@@ -7,6 +7,11 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage;
 using System;
 
+/*
+  `Designer` file decides what needs to be removed from `Snapshot` file when
+  a migration is removed.
+*/
+
 namespace DatingApp.API.Migrations
 {
     [DbContext(typeof(DataContext))]

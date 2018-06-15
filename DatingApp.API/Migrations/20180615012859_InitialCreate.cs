@@ -2,10 +2,16 @@
 using System;
 using System.Collections.Generic;
 
+/*
+  Used by Entity Framework to understand what needs to be created
+  when running the `database update` command.
+*/
+
 namespace DatingApp.API.Migrations
 {
     public partial class InitialCreate : Migration
     {
+        /* Up() method is used to create table in the database */
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
@@ -22,6 +28,7 @@ namespace DatingApp.API.Migrations
                 });
         }
 
+        /* Down() method removes migration (undoes Up() method workflow) */
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(

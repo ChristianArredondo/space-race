@@ -7,6 +7,8 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage;
 using System;
 
+/* Used by Entity Framework to keep track of all migrations */
+
 namespace DatingApp.API.Migrations
 {
     [DbContext(typeof(DataContext))]
