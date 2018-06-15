@@ -7,22 +7,22 @@ DatingApp.API/*.db
 # ------------ CLIENT ------------
 
 # compiled output
-DatingAppSPA/dist
-DatingAppSPA/tmp
-DatingAppSPA/out-tsc
+DatingApp.SPA/dist
+DatingApp.SPA/tmp
+DatingApp.SPA/out-tsc
 
 # dependencies
-DatingAppSPA/node_modules
+DatingApp.SPA/node_modules
 
 # misc
-DatingAppSPA/.sass-cache
-DatingAppSPA/connect.lock
-DatingAppSPA/coverage
-DatingAppSPA/libpeerconnection.log
-DatingAppSPA/npm-debug.log
-DatingAppSPA/yarn-error.log
-DatingAppSPA/testem.log
-DatingAppSPA/typings
+DatingApp.SPA/.sass-cache
+DatingApp.SPA/connect.lock
+DatingApp.SPA/coverage
+DatingApp.SPA/libpeerconnection.log
+DatingApp.SPA/npm-debug.log
+DatingApp.SPA/yarn-error.log
+DatingApp.SPA/testem.log
+DatingApp.SPA/typings
 
 # System Files
 .DS_Store
