@@ -8,17 +8,20 @@ namespace DatingApp.API.Data
   public class AuthRepository : IAuthRepository
   {
     private readonly DataContext _context;
-    public AuthRepository(DataContext context) {
+    public AuthRepository(DataContext context)
+    {
       this._context = context;
     }
     public async Task<User> Login(string authUsername, string password)
     {
       var user = await _context.Users.FirstOrDefaultAsync(dbUser => dbUser.Username == authUsername);
 
-      if (user == null) {
+      if (user == null)
+      {
         return null;
       }
-      if (!VerifyPasswordHash(password, user.PasswordHash, user.PasswordSalt)) {
+      if (!VerifyPasswordHash(password, user.PasswordHash, user.PasswordSalt))
+      {
         return null;
       }
       // auth successful

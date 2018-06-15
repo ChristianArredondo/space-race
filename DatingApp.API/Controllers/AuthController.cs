@@ -12,72 +12,73 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace DatingApp.API.Controllers
 {
-    [Route("api/[controller]")]
-    public class AuthController : Controller
+  [Route("api/[controller]")]
+  public class AuthController : Controller
+  {
+    private readonly IAuthRepository _repo;
+    private readonly IConfiguration _config;
+    public AuthController(IAuthRepository repo, IConfiguration config)
     {
-        private readonly IAuthRepository _repo;
-        private readonly IConfiguration _config;
-        public AuthController(IAuthRepository repo, IConfiguration config) {
-          _repo = repo;
-          _config = config;
-        }
+      _repo = repo;
+      _config = config;
+    }
 
-        /* Use [FromBody] to enforce that values be pulled from Http request body  */
-        [HttpPost("register")]
-        public async Task<IActionResult> Register([FromBody]UserForRegisterDto userForRegisterDto)
-        {
+    /* Use [FromBody] to enforce that values be pulled from Http request body  */
+    [HttpPost("register")]
+    public async Task<IActionResult> Register([FromBody]UserForRegisterDto userForRegisterDto)
+    {
 
-          /* Validation errors are stored in ModelState */
-          userForRegisterDto.Username = userForRegisterDto.Username.ToLower();
+      /* Validation errors are stored in ModelState */
+      userForRegisterDto.Username = userForRegisterDto.Username.ToLower();
 
-          /* Add custom error to ModelState is username is taken */
-          if (await _repo.UserExists(userForRegisterDto.Username))
-            ModelState.AddModelError("Username", "Username already exists");
+      /* Add custom error to ModelState is username is taken */
+      if (await _repo.UserExists(userForRegisterDto.Username))
+        ModelState.AddModelError("Username", "Username already exists");
 
-          if (!ModelState.IsValid)
-            return BadRequest(ModelState);
+      if (!ModelState.IsValid)
+        return BadRequest(ModelState);
 
-          
-          var userToCreate = new User
+
+      var userToCreate = new User
+      {
+        Username = userForRegisterDto.Username
+      };
+
+      var createdUser = await _repo.Register(userToCreate, userForRegisterDto.Password);
+
+      return StatusCode(201);
+    }
+
+    [HttpPost("login")]
+    public async Task<IActionResult> Login([FromBody]UserforLoginDto userForLoginDto)
+    {
+      // fetch user by login
+      var userFromRepo = await _repo.Login(userForLoginDto.Username.ToLower(), userForLoginDto.Password);
+
+      // return 401 if user not found
+      if (userFromRepo == null)
+        return Unauthorized();
+
+      // generate token
+      var tokenHandler = new JwtSecurityTokenHandler();
+      var key = Encoding.ASCII.GetBytes(_config.GetSection("AppSettings:Token").Value);
+      // construct jwt descriptor
+      var tokenDescriptor = new SecurityTokenDescriptor
+      {
+        Subject = new ClaimsIdentity(new Claim[]
           {
-            Username = userForRegisterDto.Username
-          };
-
-          var createdUser = await _repo.Register(userToCreate, userForRegisterDto.Password);
-
-          return StatusCode(201);
-        }
-
-        [HttpPost("login")]
-        public async Task<IActionResult> Login([FromBody]UserforLoginDto userForLoginDto)
-        {
-          // fetch user by login
-          var userFromRepo = await _repo.Login(userForLoginDto.Username.ToLower(), userForLoginDto.Password);
-
-          // return 401 if user not found
-          if (userFromRepo == null)
-            return Unauthorized();
-          
-          // generate token
-          var tokenHandler = new JwtSecurityTokenHandler();
-          var key = Encoding.ASCII.GetBytes(_config.GetSection("AppSettings:Token").Value);
-          // construct jwt descriptor
-          var tokenDescriptor = new SecurityTokenDescriptor
-          {
-            Subject = new ClaimsIdentity(new Claim[]
-              {
                 new Claim(ClaimTypes.NameIdentifier, userFromRepo.Id.ToString()),
                 new Claim(ClaimTypes.Name, userFromRepo.Username)
-              }),
-              Expires = DateTime.Now.AddDays(1),
-              SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key),
-                SecurityAlgorithms.HmacSha512Signature)
-          };
-          // create token
-          var token = tokenHandler.CreateToken(tokenDescriptor);
-          var tokenString = tokenHandler.WriteToken(token);
+          }),
+        Expires = DateTime.Now.AddDays(1),
+        SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key),
+            SecurityAlgorithms.HmacSha512Signature)
+      };
+      // create token
+      var token = tokenHandler.CreateToken(tokenDescriptor);
+      var tokenString = tokenHandler.WriteToken(token);
 
-          return Ok(new {tokenString});
-        }
+      return Ok(new { tokenString });
     }
+  }
 }
