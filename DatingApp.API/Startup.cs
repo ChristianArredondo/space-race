@@ -13,32 +13,41 @@ using Microsoft.Extensions.Options;
 
 namespace DatingApp.API
 {
-    public class Startup
+  public class Startup
+  {
+    public Startup(IConfiguration configuration)
     {
-        public Startup(IConfiguration configuration)
-        {
-            Configuration = configuration;
-        }
-
-        public IConfiguration Configuration { get; }
-
-        // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
-        {
-            /* Connection string should match with connection string in `appsettings.json` */
-            services.AddDbContext<DataContext>(x => x.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
-            services.AddMvc();
-        }
-
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
-        {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-
-            app.UseMvc();
-        }
+      Configuration = configuration;
     }
+
+    public IConfiguration Configuration { get; }
+
+    // This method gets called by the runtime. Use this method to add services to the container.
+    public void ConfigureServices(IServiceCollection services)
+    {
+      /*
+        - connection string should match with connection string in `appsettings.json`
+        - order doesn't matter (according to tutorial)
+      */
+      services.AddDbContext<DataContext>(CotextOptionsBuilder => CotextOptionsBuilder.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
+      services.AddMvc();
+      services.AddCors();
+    }
+
+    // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+    public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+    {
+      if (env.IsDevelopment())
+      {
+        app.UseDeveloperExceptionPage();
+      }
+      /*
+        - order DOES matter here
+        - we need CORS policy to be evaluated before `UseMVC`
+        - keep `UseMVC` last because this is what returns the request to the client
+      */
+      app.UseCors(CorsPolicyBuilder => CorsPolicyBuilder.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin().AllowCredentials());
+      app.UseMvc();
+    }
+  }
 }
