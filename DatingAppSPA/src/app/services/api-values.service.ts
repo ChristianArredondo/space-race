@@ -11,7 +11,7 @@ export class ApiValuesService {
   private _apiLocation: string;
 
   constructor(private _http: HttpClient) {
-    this._apiLocation = 'api/values';
+    this._apiLocation = 'http://localhost:5000/api/values';
   }
 
   /** Fetches list of values from server/db */
