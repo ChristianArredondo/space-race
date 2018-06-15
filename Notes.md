@@ -40,3 +40,16 @@ Add `Register()` method to `AuthRepository` which hashes password, creates new U
 Use DTOs to parse http request body data for user registration.
 
 ## 31. Validation in the API
+
+## 32. Token Authentication (JWTs)
+
+JWT Structure
+* header
+  * algorithm used for encryption (i.e. `'HS512'`)
+  * type of token (i.e. `'JWT'`)
+* payload
+  * nameId
+  * expiration
+  * issued timestamp
+* secret
+  * used to encode/hash token
