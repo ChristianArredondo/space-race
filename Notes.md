@@ -33,4 +33,10 @@ The repository mediates between the data source layer and the business layers of
 
 ## 29. Creating the Register Method in our Auth Controller
 
+Add `Register()` method to `AuthRepository` which hashes password, creates new User, and adds new User to Db.
+
 ## 30. Using DTOs (Data Transfer Objects)
+
+Use DTOs to parse http request body data for user registration.
+
+## 31. Validation in the API
