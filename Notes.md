@@ -53,3 +53,5 @@ JWT Structure
   * issued timestamp
 * secret
   * used to encode/hash token
+
+## 33. Creating the Login Method in the API
