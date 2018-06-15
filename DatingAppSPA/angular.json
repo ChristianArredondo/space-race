@@ -9,7 +9,7 @@
       "projectType": "application",
       "prefix": "app",
       "schematics": {
-        "@schematics/angular:component": {
+        "@ngrx/schematics:component": {
           "styleext": "scss",
           "spec": false,
           "changeDetection": "OnPush"
@@ -124,5 +124,8 @@
       }
     }
   },
-  "defaultProject": "DatingAppSPA"
+  "defaultProject": "DatingAppSPA",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }
