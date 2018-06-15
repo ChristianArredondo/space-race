@@ -9,15 +9,19 @@ import { ServicesModule } from './services';
 // NGRX
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { reducers, metaReducers } from './store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { reducers, metaReducers } from './store';
 import { ValueEffects } from './effects';
+
+// COMPONENTS
+import { NavComponent } from './nav/nav.component';
 import { ValueComponent } from './value/value.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ValueComponent
+    ValueComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,
