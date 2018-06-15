@@ -12,10 +12,12 @@ import { EffectsModule } from '@ngrx/effects';
 import { reducers, metaReducers } from './store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { ValueEffects } from './effects';
+import { ValueComponent } from './value/value.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ValueComponent
   ],
   imports: [
     BrowserModule,
