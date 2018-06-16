@@ -17,12 +17,10 @@ import { ValueEffects } from './effects';
 // COMPONENTS
 import { HomeComponent } from './home';
 import { RegisterComponent } from './register';
-import { ValueComponent } from './value';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ValueComponent,
     HomeComponent,
     RegisterComponent,
   ],
