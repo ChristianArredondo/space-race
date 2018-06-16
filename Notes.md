@@ -67,3 +67,7 @@ JWT Structure
 * created AuthController with `login()` and `register()` methods
 * added auth protection to ValuesController
 * added Authentication middleware to Startup class
+
+# Section 4: Client Login and Register
+
+## 36. Intro
