@@ -1,4 +1,4 @@
-<form #registerForm="ngForm" (ngSubmit)="onRegister()">
+<form #registerForm="ngForm" (ngSubmit)="register.emit(registerFormModel)">
   <h2 class="text-center text-primary">Sign Up</h2>
 
   <hr>
@@ -8,13 +8,6 @@
 
   <div class="form-group">
     <input type="password" class="form-control" placeholder="Password" required name="password" [(ngModel)]="registerFormModel.password">
-  </div>
-
-  <div class="form-group">
-    <label for="favoriteValue">What is your favorite value?</label>
-    <select id="favoriteValue" class="form-control">
-      <option *ngFor="let value of values" [value]="value">{{ value.name }}</option>
-    </select>
   </div>
 
   <div class="form-group text-center">

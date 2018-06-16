@@ -25,7 +25,12 @@ export class Logout implements Action {
 
 export class Register implements Action {
   readonly type = AuthActionTypes.Register;
-  constructor(public payload: User) {}
+  constructor(public payload: Partial<User>) {}
 }
 
-export type AuthActions = Login | LoginSuccess | Logout;
+export class RegisterSuccess implements Action {
+  readonly type = AuthActionTypes.RegisterSuccess;
+  constructor(public payload: any) {} // TODO. update type after updating server
+}
+
+export type AuthActions = Login | LoginSuccess | Logout | Register | RegisterSuccess;

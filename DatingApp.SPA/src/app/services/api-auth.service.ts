@@ -17,14 +17,13 @@ export class ApiAuthService {
     this._apiLocation = 'http://localhost:5000/api/auth';
   }
 
-  // TODO. update return type to User
   public login(auth: User): Observable<{ tokenString: string }> {
     return this._http.post<{ tokenString: string }>(`${this._apiLocation}/login`, auth).pipe(
       catchError(error => throwError(error))
     );
   }
 
-  public register(auth: User): Observable<void> {
+  public register(auth: Partial<User>): Observable<void> {
     return this._http.post<void>(`${this._apiLocation}/register`, auth).pipe(
       catchError(error => throwError(error))
     );
