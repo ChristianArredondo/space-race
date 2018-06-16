@@ -16,6 +16,9 @@ export function reducer(state = initialState, action: authActions.AuthActions): 
         token: action.payload
       };
     }
+    case authActions.AuthActionTypes.Logout: {
+      return initialState;
+    }
     default:
       return state;
   }
