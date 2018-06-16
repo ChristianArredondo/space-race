@@ -9,14 +9,15 @@ import { FormGroup } from '@angular/forms';
 })
 export class NavComponent {
   @HostBinding('class.app-nav') cssClass = true;
-  @Input() authForm: FormGroup;
-  @Output() login: EventEmitter<void>;
+
+  @Input() authForm: FormGroup; // auth-related FormGroup, constructed in parent container
+  @Input() isAuth: boolean; // determines nav UI
+
+  @Output() login: EventEmitter<void>; // emitted when User submits login form
+  @Output() logout: EventEmitter<void>; // emitted when User clicks on logout button
 
   constructor() {
     this.login = new EventEmitter();
-  }
-
-  onLogout() {
-
+    this.logout = new EventEmitter();
   }
 }

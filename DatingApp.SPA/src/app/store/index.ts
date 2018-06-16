@@ -13,8 +13,6 @@ import { localStorageSync, rehydrateApplicationState } from 'ngrx-store-localsto
 // ENV
 import { environment } from '../../environments/environment';
 
-
-
 export interface State {
   auth: fromAuth.State;
   value: fromValue.State;
@@ -48,6 +46,7 @@ export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionRedu
 // ---------------- AUTH ----------------
 export const getAuthState = (state: State) => state.auth;
 export const getAuthToken = createSelector(getAuthState, fromAuth.getToken);
+export const getIsAuth = createSelector(getAuthToken, token => !!token);
 
 // ---------------- VALUES ----------------
 export const getValuesState = (state: State) => state.value;

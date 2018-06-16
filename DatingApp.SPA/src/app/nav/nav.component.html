@@ -15,7 +15,7 @@
         <li><a href="#">Lists</a></li>
         <li><a href="#">Messages</a></li>
       </ul>
-      <form class="navbar-form navbar-right" [formGroup]="authForm" (ngSubmit)="login.emit()">
+      <form *ngIf="!isAuth" class="navbar-form navbar-right" [formGroup]="authForm" (ngSubmit)="login.emit()">
         <div class="form-group">
           <input type="text" required formControlName="username" placeholder="username" class="form-control">
         </div>
@@ -24,8 +24,8 @@
         </div>
         <button type="submit" class="btn btn-success">Sign in</button>
       </form>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a (click)="onLogout()">Logout</a></li>
+      <ul *ngIf="isAuth" class="nav navbar-nav navbar-right">
+        <li class="logout"><a (click)="logout.emit()">Logout</a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Welcome User <span class="caret"></span></a>
           <ul class="dropdown-menu">
