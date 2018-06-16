@@ -4,3 +4,6 @@ export {
   ValueActions,
   ValueActionTypes
 } from './value.actions';
+
+import * as authActions from './auth.actions';
+export { authActions };

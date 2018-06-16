@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from 'src/app/services/auth.service';
-import { first, filter } from 'rxjs/operators';
+
+// NGRX
+import { Store } from '@ngrx/store';
+import * as fromRoot from './store';
+import { authActions } from './actions';
 
 @Component({
   selector: 'app-root',
@@ -11,12 +14,12 @@ import { first, filter } from 'rxjs/operators';
 export class AppComponent {
   public authForm: FormGroup;
 
-  constructor(private _formBuilder: FormBuilder, private _authService: AuthService) {
+  constructor(private _formBuilder: FormBuilder, private _store$: Store<fromRoot.State>) {
     this.authForm = this._buildForm();
   }
 
   public onLogin() {
-    this._authService.login(this.authForm.value).pipe(filter(v => !!v), first()).subscribe();
+    this._store$.dispatch(new authActions.Login(this.authForm.value));
   }
 
   private _buildForm(): FormGroup {

@@ -15,4 +15,8 @@ export class NavComponent {
   constructor() {
     this.login = new EventEmitter();
   }
+
+  onLogout() {
+
+  }
 }

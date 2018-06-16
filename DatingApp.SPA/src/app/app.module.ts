@@ -18,6 +18,7 @@ import { ValueEffects } from './effects';
 // COMPONENTS
 import { NavComponent } from './nav/nav.component';
 import { ValueComponent } from './value/value.component';
+import { AuthEffects } from './effects/auth.effects';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,7 @@ import { ValueComponent } from './value/value.component';
     FormsModule,
     ReactiveFormsModule,
     StoreModule.forRoot(reducers, { metaReducers }),
-    EffectsModule.forRoot([ValueEffects]),
+    EffectsModule.forRoot([AuthEffects, ValueEffects]),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     ServicesModule,
   ],
