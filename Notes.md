@@ -1,3 +1,8 @@
+# Libraries
+* auth0/angular-jwt
+* ngx-bootstrap
+* alertifyjs
+
 
 # Section 3: Security
 
