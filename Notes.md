@@ -70,4 +70,7 @@ JWT Structure
 
 # Section 4: Client Login and Register
 
-## 36. Intro
+# Section 5: Error Handling
+
+* add API error handling for Production by use of middleware in `Startup.cs`
+* add new helper class `Extensions` for adding error-related headers
