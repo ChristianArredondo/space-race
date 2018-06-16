@@ -15,6 +15,7 @@ import { environment } from '../../environments/environment';
 // AUTH0
 import { JwtHelperService } from '@auth0/angular-jwt';
 const helper = new JwtHelperService();
+
 export interface State {
   auth: fromAuth.State;
   value: fromValue.State;
