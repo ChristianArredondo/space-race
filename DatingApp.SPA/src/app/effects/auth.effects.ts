@@ -8,7 +8,7 @@ import { authActions } from '../actions';
 import { switchMap, map, catchError } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 // SERVICES
-import { AuthService } from '../services';
+import { ApiAuthService } from '../services';
 
 
 @Injectable()
@@ -25,5 +25,5 @@ export class AuthEffects {
     ))
   );
 
-  constructor(private actions$: Actions, private _authservice: AuthService) {}
+  constructor(private actions$: Actions, private _authservice: ApiAuthService) {}
 }

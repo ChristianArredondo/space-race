@@ -8,7 +8,7 @@ import { catchError } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
+export class ApiAuthService {
   private _apiLocation: string;
 
   constructor(private _http: HttpClient) {
