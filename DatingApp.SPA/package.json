@@ -30,6 +30,7 @@
     "@ngrx/store-devtools": "^6.0.1",
     "alertifyjs": "^1.11.1",
     "bootstrap": "3.3.7",
+    "bootswatch": "3.3.7",
     "core-js": "^2.5.4",
     "font-awesome": "^4.7.0",
     "ngrx-store-localstorage": "^5.0.0",
