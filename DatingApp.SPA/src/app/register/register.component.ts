@@ -1,7 +1,7 @@
 // CORE ANGULAR
 import { Component, ChangeDetectionStrategy, HostBinding, Output, EventEmitter, Input } from '@angular/core';
 // MODELS
-import { Value } from '../models';
+import { Value, User } from '../models';
 
 @Component({
   selector: 'app-register',
@@ -16,7 +16,7 @@ export class RegisterComponent {
 
   @Output() cancelRegistration: EventEmitter<void>; // sets `inRegisterMode` to false in parent container
 
-  public registerFormModel: { username: string; password: string }; // model for registration template-driven form
+  public registerFormModel: Partial<User>; // model for registration template-driven form
 
   constructor() {
     this.registerFormModel = { username: null, password: null };

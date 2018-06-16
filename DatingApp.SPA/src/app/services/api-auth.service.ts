@@ -4,6 +4,8 @@ import { HttpClient } from '@angular/common/http';
 // RXJS
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+// MODELS
+import { User } from '../models';
 
 @Injectable({
   providedIn: 'root'
@@ -16,9 +18,16 @@ export class ApiAuthService {
   }
 
   // TODO. update return type to User
-  login(auth: { username: string; password: string }): Observable<{ tokenString: string }> {
+  public login(auth: User): Observable<{ tokenString: string }> {
     return this._http.post<{ tokenString: string }>(`${this._apiLocation}/login`, auth).pipe(
       catchError(error => throwError(error))
     );
   }
+
+  public register(auth: User): Observable<void> {
+    return this._http.post<void>(`${this._apiLocation}/register`, auth).pipe(
+      catchError(error => throwError(error))
+    );
+  }
+
 }
