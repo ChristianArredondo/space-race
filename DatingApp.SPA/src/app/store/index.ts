@@ -46,6 +46,8 @@ export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionRedu
 }
 
 // ---------------- AUTH ----------------
+export const getAuthState = (state: State) => state.auth;
+export const getAuthToken = createSelector(getAuthState, fromAuth.getToken);
 
 // ---------------- VALUES ----------------
 export const getValuesState = (state: State) => state.value;

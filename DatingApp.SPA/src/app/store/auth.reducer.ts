@@ -20,3 +20,5 @@ export function reducer(state = initialState, action: authActions.AuthActions): 
       return state;
   }
 }
+
+export const getToken = (state: State) => state.token;
