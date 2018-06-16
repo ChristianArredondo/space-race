@@ -1,15 +1,15 @@
 // CORE ANGULAR
 import { Injectable } from '@angular/core';
+import { HttpErrorResponse } from '@angular/common/http';
 // NGRX
 import { Action } from '@ngrx/store';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { authActions } from '../actions';
 // RXJS
-import { switchMap, map, catchError } from 'rxjs/operators';
-import { Observable, throwError } from 'rxjs';
+import { switchMap, map, catchError, tap } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
 // SERVICES
-import { ApiAuthService } from '../services';
-import { HttpErrorResponse } from '@angular/common/http';
+import { AlertifyService, ApiAuthService } from '../services';
 
 @Injectable()
 export class AuthEffects {
@@ -18,10 +18,14 @@ export class AuthEffects {
   login$: Observable<Action> = this.actions$.pipe(
     ofType(authActions.AuthActionTypes.Login),
     map((action: authActions.Login) => action.payload),
-    switchMap((authLogin) => this._authservice.login(authLogin).pipe(
+    switchMap((authLogin) => this._authService.login(authLogin).pipe(
       // TODO. set loading state
+      tap(({ tokenString }) => tokenString && this._alertifyService.successAlert('Welcome back :D')),
       map(({ tokenString }) => new authActions.LoginSuccess(tokenString)),
-      catchError(this._errorHandler)
+      catchError(error => {
+        this._alertifyError(error);
+        return of(new authActions.LoginError(error));
+      })
     ))
   );
 
@@ -29,18 +33,23 @@ export class AuthEffects {
   register$: Observable<Action> = this.actions$.pipe(
     ofType(authActions.AuthActionTypes.Register),
     map((action: authActions.Register) => action.payload),
-    switchMap(authRegistration => this._authservice.register(authRegistration).pipe(
-      // TODO. set loading state
-      map(success => new authActions.RegisterSuccess(success)),
-      catchError(this._errorHandler)
-    ))
+    switchMap(authRegistration => {
+      return this._authService.register(authRegistration).pipe(
+        // TODO. set loading state
+        tap(() => this._alertifyService.successAlert('Registration successful!')),
+        map((success) => new authActions.RegisterSuccess(success)),
+        catchError(error => {
+          this._alertifyError(error);
+          return of(new authActions.RegisterError(error));
+        })
+      );
+    })
   );
 
-  /** TODO. dispatch error action */
-  private _errorHandler(error: HttpErrorResponse) {
+  private _alertifyError(error: HttpErrorResponse): void {
     const applicationError = error.headers.get('Application-Error');
     if (applicationError) {
-      return throwError(applicationError);
+      this._alertifyService.errorAlert(applicationError);
     }
     let modelStateError: string;
     if (error.error) {
@@ -51,8 +60,12 @@ export class AuthEffects {
         return memo;
       }, '');
     }
-    return throwError(modelStateError || 'Unspecified server error');
+    this._alertifyService.errorAlert(modelStateError || 'Unable to authenticate.');
   }
 
-  constructor(private actions$: Actions, private _authservice: ApiAuthService) {}
+  constructor(
+    private actions$: Actions,
+    private _authService: ApiAuthService,
+    private _alertifyService: AlertifyService
+  ) {}
 }

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 
+import { AlertifyService } from './alertify.service';
 import { ApiValuesService } from './api-values.service';
 import { ApiAuthService } from './api-auth.service';
 
@@ -11,6 +12,6 @@ import { ApiAuthService } from './api-auth.service';
     HttpClientModule
   ],
   declarations: [],
-  providers: [ApiValuesService, ApiAuthService]
+  providers: [AlertifyService, ApiValuesService, ApiAuthService]
 })
 export class ServicesModule { }
