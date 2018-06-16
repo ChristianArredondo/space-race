@@ -16,11 +16,13 @@ import { ValueEffects } from './effects';
 // COMPONENTS
 import { ValueComponent } from './value/value.component';
 import { AuthEffects } from './effects/auth.effects';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ValueComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
