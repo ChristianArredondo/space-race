@@ -29,7 +29,8 @@ namespace DatingApp.API.Controllers
     {
 
       /* Validation errors are stored in ModelState */
-      userForRegisterDto.Username = userForRegisterDto.Username.ToLower();
+      if (!string.IsNullOrEmpty(userForRegisterDto.Username))
+        userForRegisterDto.Username = userForRegisterDto.Username.ToLower();
 
       /* Add custom error to ModelState is username is taken */
       if (await _repo.UserExists(userForRegisterDto.Username))
