@@ -12,17 +12,19 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { reducers, metaReducers } from './store';
+import { AuthEffects } from './effects';
 import { ValueEffects } from './effects';
 // COMPONENTS
-import { ValueComponent } from './value/value.component';
-import { AuthEffects } from './effects/auth.effects';
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './home';
+import { RegisterComponent } from './register';
+import { ValueComponent } from './value';
 
 @NgModule({
   declarations: [
     AppComponent,
     ValueComponent,
     HomeComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
