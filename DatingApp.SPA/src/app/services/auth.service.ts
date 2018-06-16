@@ -1,7 +1,9 @@
+// CORE ANGULAR
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
+// RXJS
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -13,14 +15,10 @@ export class AuthService {
     this._apiLocation = 'http://localhost:5000/api/auth';
   }
 
-  // update return type to User
-  login(auth: { username: string; password: string}): Observable<any> {
-    return this._http.post(`${this._apiLocation}/login`, auth).pipe(
-      tap(user => {
-        if (user) {
-          localStorage.setItem('token', user.tokenString);
-        }
-      })
+  // TODO. update return type to User
+  login(auth: { username: string; password: string }): Observable<{ tokenString: string }> {
+    return this._http.post<{ tokenString: string }>(`${this._apiLocation}/login`, auth).pipe(
+      catchError(error => throwError(error))
     );
   }
 }

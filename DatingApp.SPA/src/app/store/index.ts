@@ -1,11 +1,19 @@
+// CORE ANGULAR
 import {
   ActionReducerMap,
   createSelector,
-  MetaReducer
+  MetaReducer,
+  ActionReducer
 } from '@ngrx/store';
-import { environment } from '../../environments/environment';
+// NGRX
 import * as fromValue from './value.reducer';
 import * as fromAuth from './auth.reducer';
+import { storageActions } from '../actions';
+import { localStorageSync, rehydrateApplicationState } from 'ngrx-store-localstorage';
+// ENV
+import { environment } from '../../environments/environment';
+
+
 
 export interface State {
   auth: fromAuth.State;
@@ -17,12 +25,31 @@ export const reducers: ActionReducerMap<State> = {
   value: fromValue.reducer,
 };
 
-// ---------------- AUTH ----------------
+export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
+  return (state: State, action: storageActions.Actions) => {
+    const keys = ['auth'];
 
+    if (action.type === storageActions.STORAGE && keys.includes(action.payload)) {
+      const rehydratedState = rehydrateApplicationState(
+        [action.payload],
+        localStorage,
+        key => key,
+        true
+      );
+      return { ...state, ...rehydratedState };
+    }
+    return localStorageSync({
+      keys,
+      rehydrate: true,
+    })(reducer)(state, action);
+  };
+}
+
+// ---------------- AUTH ----------------
 
 // ---------------- VALUES ----------------
 export const getValuesState = (state: State) => state.value;
 export const getAllValues = createSelector(getValuesState, fromValue.selectAll);
 
 
-export const metaReducers: MetaReducer<State>[] = !environment.production ? [] : [];
+export const metaReducers: MetaReducer<State>[] = !environment.production ? [localStorageSyncReducer] : [localStorageSyncReducer];
