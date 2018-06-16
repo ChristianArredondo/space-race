@@ -12,6 +12,7 @@ export class NavComponent {
 
   @Input() authForm: FormGroup; // auth-related FormGroup, constructed in parent container
   @Input() isAuth: boolean; // determines nav UI
+  @Input() authUsername: string; // username of currently-authenticated User
 
   @Output() login: EventEmitter<void>; // emitted when User submits login form
   @Output() logout: EventEmitter<void>; // emitted when User clicks on logout button

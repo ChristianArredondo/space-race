@@ -16,10 +16,12 @@ import { Observable } from 'rxjs';
 export class AppComponent {
   public authForm: FormGroup; // auth-related FormGroup for performing login
   public isAuth$: Observable<boolean>; // based on whether token exists in localstorage
+  public authUsername$: Observable<string>; // username of currently-authenticated User
 
   constructor(private _formBuilder: FormBuilder, private _store$: Store<fromRoot.State>) {
     this.authForm = this._buildAuthForm();
     this.isAuth$ = this._store$.pipe(select(fromRoot.getIsAuth));
+    this.authUsername$ = this._store$.pipe(select(fromRoot.getAuthUsername));
   }
 
   // POST new login to server and set token in localstorage if successful
