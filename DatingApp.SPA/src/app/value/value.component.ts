@@ -1,11 +1,6 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
-// NGRX
-import { Store, select } from '@ngrx/store';
-import * as fromRoot from '../store';
-// RXJS
-import { Observable } from 'rxjs';
-// MODELS
-import { Value } from '../models';
+// CORE ANGULAR
+import { Component, ChangeDetectionStrategy, HostBinding } from '@angular/core';
+
 
 @Component({
   selector: 'app-value',
@@ -14,12 +9,5 @@ import { Value } from '../models';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ValueComponent {
-  public values$: Observable<Value[]>; // list of values fetched from the server
-
-  constructor(
-    private _store$: Store<fromRoot.State>
-  ) {
-    this.values$ = this._store$.pipe(select(fromRoot.getAllValues));
-  }
-
+  @HostBinding('class.app-value') cssClass = true;
 }

@@ -1,4 +1,11 @@
+// CORE ANGULAR
 import { Component, ChangeDetectionStrategy } from '@angular/core';
+// NGRX
+import { Store, select } from '@ngrx/store';
+import * as fromRoot from '../store';
+import { Observable } from 'rxjs';
+import { Value } from '../models';
+// RXJS
 
 @Component({
   selector: 'app-home',
@@ -7,7 +14,12 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HomeComponent {
-  public inRegisterMode = false;
+  public inRegisterMode = false; // determined whether to show register form
+  public values$: Observable<Value[]>; // values fetched from server
+
+  constructor(private _store$: Store<fromRoot.State>) {
+    this.values$ = this._store$.pipe(select(fromRoot.getAllValues));
+  }
 
   public toggleRegisterMode() {
     this.inRegisterMode = !this.inRegisterMode;

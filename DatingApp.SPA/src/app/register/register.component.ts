@@ -1,4 +1,7 @@
-import { Component, ChangeDetectionStrategy, HostBinding, Output, EventEmitter } from '@angular/core';
+// CORE ANGULAR
+import { Component, ChangeDetectionStrategy, HostBinding, Output, EventEmitter, Input } from '@angular/core';
+// MODELS
+import { Value } from '../models';
 
 @Component({
   selector: 'app-register',
@@ -8,6 +11,8 @@ import { Component, ChangeDetectionStrategy, HostBinding, Output, EventEmitter }
 })
 export class RegisterComponent {
   @HostBinding('class.app-register') cssClass = true;
+
+  @Input() values: Value[]; // values fetched from server by parent container
 
   @Output() cancelRegistration: EventEmitter<void>; // sets `inRegisterMode` to false in parent container
 

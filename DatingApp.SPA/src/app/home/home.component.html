@@ -9,6 +9,6 @@
 
 <div *ngIf="inRegisterMode" class="container">
   <div class="col-md-4 col-md-offset-4">
-    <app-register (cancelRegistration)="inRegisterMode = false"></app-register>
+    <app-register (cancelRegistration)="inRegisterMode = false" [values]="values$ | async"></app-register>
   </div>
 </div>
