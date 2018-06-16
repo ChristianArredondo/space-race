@@ -12,7 +12,9 @@ import { storageActions } from '../actions';
 import { localStorageSync, rehydrateApplicationState } from 'ngrx-store-localstorage';
 // ENV
 import { environment } from '../../environments/environment';
-
+// AUTH0
+import { JwtHelperService } from '@auth0/angular-jwt';
+const helper = new JwtHelperService();
 export interface State {
   auth: fromAuth.State;
   value: fromValue.State;
@@ -46,7 +48,7 @@ export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionRedu
 // ---------------- AUTH ----------------
 export const getAuthState = (state: State) => state.auth;
 export const getAuthToken = createSelector(getAuthState, fromAuth.getToken);
-export const getIsAuth = createSelector(getAuthToken, token => !!token);
+export const getIsAuth = createSelector(getAuthToken, token => token && !helper.isTokenExpired(token));
 
 // ---------------- VALUES ----------------
 export const getValuesState = (state: State) => state.value;
