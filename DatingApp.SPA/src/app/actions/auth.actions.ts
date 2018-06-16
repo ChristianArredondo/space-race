@@ -4,9 +4,11 @@ import { User } from '../models';
 export enum AuthActionTypes {
   Login = '[Auth] Login',
   LoginSuccess = '[Auth] Login Success',
+  LoginError = '[Auth] Login Error',
   Logout = '[Auth] Logout',
   Register = '[Auth] Register',
-  RegisterSuccess = '[Auth] Register Success'
+  RegisterSuccess = '[Auth] Register Success',
+  RegisterError = '[Auth] Register Error'
 }
 
 export class Login implements Action {
@@ -17,6 +19,11 @@ export class Login implements Action {
 export class LoginSuccess implements Action {
   readonly type = AuthActionTypes.LoginSuccess;
   constructor(public payload: string) {}
+}
+
+export class LoginError implements Action {
+  readonly type = AuthActionTypes.LoginError;
+  constructor(public payload: any) {}
 }
 
 export class Logout implements Action {
@@ -33,4 +40,9 @@ export class RegisterSuccess implements Action {
   constructor(public payload: any) {} // TODO. update type after updating server
 }
 
-export type AuthActions = Login | LoginSuccess | Logout | Register | RegisterSuccess;
+export class RegisterError implements Action {
+  readonly type = AuthActionTypes.RegisterError;
+  constructor(public payload: any) {}
+}
+
+export type AuthActions = Login | LoginSuccess | LoginError | Logout | Register | RegisterSuccess | RegisterError;

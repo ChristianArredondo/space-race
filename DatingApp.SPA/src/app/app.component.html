@@ -1,3 +1,8 @@
-<app-nav [authForm]="authForm" [isAuth]="isAuth$ | async" (login)="onLogin()" (logout)="onLogout()"></app-nav>
+<app-nav
+  [authForm]="authForm"
+  [isAuth]="isAuth$ | async"
+  [authUsername]="authUsername$ | async"
+  (login)="onLogin()"
+  (logout)="onLogout()"></app-nav>
 
 <app-home></app-home>

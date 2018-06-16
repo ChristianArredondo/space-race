@@ -10,8 +10,13 @@ import * as fromValue from './value.reducer';
 import * as fromAuth from './auth.reducer';
 import { storageActions } from '../actions';
 import { localStorageSync, rehydrateApplicationState } from 'ngrx-store-localstorage';
+// MODELS
+import { DecodedToken } from '../models';
 // ENV
 import { environment } from '../../environments/environment';
+// AUTH0
+import { JwtHelperService } from '@auth0/angular-jwt';
+const jwtHelper = new JwtHelperService();
 
 export interface State {
   auth: fromAuth.State;
@@ -46,7 +51,13 @@ export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionRedu
 // ---------------- AUTH ----------------
 export const getAuthState = (state: State) => state.auth;
 export const getAuthToken = createSelector(getAuthState, fromAuth.getToken);
-export const getIsAuth = createSelector(getAuthToken, token => !!token);
+export const getIsAuth = createSelector(getAuthToken, token => token && !jwtHelper.isTokenExpired(token));
+export const getAuthUsername = createSelector(getAuthToken, getIsAuth, (token, isAuth) => {
+  if (isAuth) {
+    const decodedToken: DecodedToken = jwtHelper.decodeToken(token);
+    return decodedToken.unique_name;
+  }
+});
 
 // ---------------- VALUES ----------------
 export const getValuesState = (state: State) => state.value;

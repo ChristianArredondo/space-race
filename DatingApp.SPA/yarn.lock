@@ -175,6 +175,12 @@
   dependencies:
     tslib "^1.9.0"
 
+"@auth0/angular-jwt@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@auth0/angular-jwt/-/angular-jwt-2.0.0.tgz#c0b2861824a24fb62d9d2e1fdb03a326e8a1e203"
+  dependencies:
+    url "^0.11.0"
+
 "@ngrx/effects@^6.0.1":
   version "6.0.1"
   resolved "https://registry.yarnpkg.com/@ngrx/effects/-/effects-6.0.1.tgz#b4c0a7918b8c9a4dbc2a663ea7562bea5db21257"
@@ -225,6 +231,16 @@
     rxjs "^6.0.0"
     semver "^5.3.0"
     semver-intersect "^1.1.2"
+
+"@types/angular-jwt@^0.0.29":
+  version "0.0.29"
+  resolved "https://registry.yarnpkg.com/@types/angular-jwt/-/angular-jwt-0.0.29.tgz#003fb52fa940ca630f2e67102623251954f62077"
+  dependencies:
+    "@types/angular" "*"
+
+"@types/angular@*":
+  version "1.6.47"
+  resolved "https://registry.yarnpkg.com/@types/angular/-/angular-1.6.47.tgz#f7a31279a02c0892ed9aa76aae2da1b17791bacd"
 
 "@types/jasmine@*", "@types/jasmine@~2.8.6":
   version "2.8.8"
@@ -455,6 +471,10 @@ ajv@~6.4.0:
     fast-json-stable-stringify "^2.0.0"
     json-schema-traverse "^0.3.0"
     uri-js "^3.0.2"
+
+alertifyjs@^1.11.1:
+  version "1.11.1"
+  resolved "https://registry.yarnpkg.com/alertifyjs/-/alertifyjs-1.11.1.tgz#e40e45c4fde4234467cc481b936fe6337e6a4828"
 
 align-text@^0.1.1, align-text@^0.1.3:
   version "0.1.4"
@@ -886,6 +906,10 @@ boom@2.x.x:
 bootstrap@3.3.7:
   version "3.3.7"
   resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-3.3.7.tgz#5a389394549f23330875a3b150656574f8a9eb71"
+
+bootswatch@3.3.7:
+  version "3.3.7"
+  resolved "https://registry.yarnpkg.com/bootswatch/-/bootswatch-3.3.7.tgz#eb6f9a9a8523b87a706ea91deec3e0d7eaa8ab1f"
 
 brace-expansion@^1.1.7:
   version "1.1.11"
@@ -4031,6 +4055,10 @@ next-tick@1:
 ngrx-store-localstorage@^5.0.0:
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/ngrx-store-localstorage/-/ngrx-store-localstorage-5.0.0.tgz#adc5b8373fee995f6bb2c508a0e510fc2047a74e"
+
+ngx-bootstrap@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/ngx-bootstrap/-/ngx-bootstrap-3.0.0.tgz#563368404dd71962e2ef8eee21794c6aeaab4490"
 
 no-case@^2.2.0:
   version "2.3.2"

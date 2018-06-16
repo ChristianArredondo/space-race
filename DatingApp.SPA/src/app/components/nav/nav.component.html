@@ -7,10 +7,10 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Dating App</a>
+      <a class="navbar-brand" href="#"><i class="fa fa-rocket text-primary"></i> Space Race</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
+      <ul class="nav navbar-nav" *ngIf="isAuth">
         <li><a href="#">Matches</a></li>
         <li><a href="#">Lists</a></li>
         <li><a href="#">Messages</a></li>
@@ -20,18 +20,17 @@
           <input type="text" required formControlName="username" placeholder="username" class="form-control">
         </div>
         <div class="form-group">
-          <input type="password" required formControlName="password" placeholder="Password" class="form-control">
+          <input type="password" required formControlName="password" placeholder="password" class="form-control">
         </div>
         <button type="submit" class="btn btn-success">Sign in</button>
       </form>
       <ul *ngIf="isAuth" class="nav navbar-nav navbar-right">
-        <li class="logout"><a (click)="logout.emit()">Logout</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Welcome User <span class="caret"></span></a>
-          <ul class="dropdown-menu">
+        <li class="dropdown" dropdown>
+          <a href="#" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false" dropdownToggle> {{ authUsername }} <span class="caret"></span></a>
+          <ul class="dropdown-menu" *dropdownMenu>
             <li><a href="#"> <i class="fa fa-user"></i> Edit Profile</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="#"> <i class="fa fa-sign-out"></i> Logout</a></li>
+            <li><a href="#" (click)="logout.emit()"> <i class="fa fa-sign-out"></i> Logout</a></li>
           </ul>
         </li>
       </ul>
