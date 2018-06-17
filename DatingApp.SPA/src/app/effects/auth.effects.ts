@@ -24,7 +24,7 @@ export class AuthEffects {
       tap(({ tokenString }) => {
         if (tokenString) {
           this._router.navigate(['/members']);
-          this._alertifyService.successAlert('Welcome back :D');
+          this._alertifyService.successAlert('Login successful! :D');
         }
       }),
       map(({ tokenString }) => new authActions.LoginSuccess(tokenString)),
