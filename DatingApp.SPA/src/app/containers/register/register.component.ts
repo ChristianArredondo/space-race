@@ -1,7 +1,7 @@
 // CORE ANGULAR
 import { Component, ChangeDetectionStrategy, HostBinding, Output, EventEmitter } from '@angular/core';
 // MODELS
-import { User } from '../models';
+import { User } from '../../models';
 
 @Component({
   selector: 'app-register',

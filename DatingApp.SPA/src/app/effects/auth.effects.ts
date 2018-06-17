@@ -10,6 +10,7 @@ import { switchMap, map, catchError, tap } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 // SERVICES
 import { AlertifyService, ApiAuthService } from '../services';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthEffects {
@@ -20,7 +21,12 @@ export class AuthEffects {
     map((action: authActions.Login) => action.payload),
     switchMap((authLogin) => this._authService.login(authLogin).pipe(
       // TODO. set loading state
-      tap(({ tokenString }) => tokenString && this._alertifyService.successAlert('Welcome back :D')),
+      tap(({ tokenString }) => {
+        if (tokenString) {
+          this._router.navigate(['/members']);
+          this._alertifyService.successAlert('Welcome back :D');
+        }
+      }),
       map(({ tokenString }) => new authActions.LoginSuccess(tokenString)),
       catchError(error => {
         this._alertifyError(error);
@@ -46,6 +52,12 @@ export class AuthEffects {
     })
   );
 
+  @Effect({ dispatch: false })
+  logout$ = this.actions$.pipe(
+    ofType(authActions.AuthActionTypes.Logout),
+    switchMap(() => this._router.navigate(['/home']))
+  );
+
   private _alertifyError(error: HttpErrorResponse): void {
     const applicationError = error.headers.get('Application-Error');
     if (applicationError) {
@@ -66,6 +78,7 @@ export class AuthEffects {
   constructor(
     private actions$: Actions,
     private _authService: ApiAuthService,
-    private _alertifyService: AlertifyService
+    private _alertifyService: AlertifyService,
+    private _router: Router
   ) {}
 }
