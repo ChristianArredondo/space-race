@@ -8,6 +8,27 @@
 * Kestrel
 * .NET
 
+# Intro
+
+## csproj file
+
+`.csproj` file contains project settings and references to files used by the project;
+saved in MSBuild format, which can be compiled into an executable program using the
+MSBuild program. 
+
+* run `dotnet restore` command to apply changes and make tools available.
+* Watcher.Tools allows us to run `dotnet watch run` for live reloading when source files are changed
+
+## Entity Framework
+Entity Framework is an object relational mapper (O/RM) that enables .NET developers to work with a
+database using .NET objects. It eliminates the need for most of the data-access code that is
+typically needed.
+
+* run `dotnet ef` command to ensure tool is available (look for the unicorn!)
+* run `dotnet ef migrations add {name}` for inital adding
+* run `dotnet ef database update` to update/create database
+
+
 # Section 3: Security
 
 ## 25 - The Repository Pattern
