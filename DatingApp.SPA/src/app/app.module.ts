@@ -15,8 +15,7 @@ import { reducers, metaReducers } from './store';
 import { AuthEffects } from './effects';
 import { ValueEffects } from './effects';
 // COMPONENTS
-import { HomeComponent, MemberListComponent, RegisterComponent } from './containers';
-import { ListsComponent } from './containers/lists/lists.component';
+import { HomeComponent, ListsComponent, MemberListComponent, MessagesComponent, RegisterComponent } from './containers';
 
 @NgModule({
   declarations: [
@@ -25,6 +24,7 @@ import { ListsComponent } from './containers/lists/lists.component';
     RegisterComponent,
     MemberListComponent,
     ListsComponent,
+    MessagesComponent,
   ],
   imports: [
     BrowserModule,
