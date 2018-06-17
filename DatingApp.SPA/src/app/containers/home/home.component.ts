@@ -4,7 +4,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import * as fromRoot from '../../store';
 import { Observable } from 'rxjs';
-import { Value, User } from '../../models';
+import { AuthForm, Value } from '../../models';
 import { authActions } from 'src/app/actions';
 // RXJS
 
@@ -26,7 +26,7 @@ export class HomeComponent {
     this.inRegisterMode = !this.inRegisterMode;
   }
 
-  public onRegister(registrationVals: Partial<User>) {
+  public onRegister(registrationVals: AuthForm) {
     this._store$.dispatch(new authActions.Register(registrationVals));
   }
 }

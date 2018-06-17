@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 // MODELS
-import { User } from '../models';
+import { AuthForm, User } from '../models';
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +23,7 @@ export class ApiAuthService {
     );
   }
 
-  public register(auth: Partial<User>): Observable<void> {
+  public register(auth: AuthForm): Observable<void> {
     return this._http.post<void>(`${this._apiLocation}/register`, auth).pipe(
       catchError(error => throwError(error))
     );

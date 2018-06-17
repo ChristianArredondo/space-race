@@ -1,7 +1,7 @@
 // CORE ANGULAR
 import { Component, ChangeDetectionStrategy, HostBinding, Output, EventEmitter } from '@angular/core';
 // MODELS
-import { User } from '../../models';
+import { AuthForm } from '../../models';
 
 @Component({
   selector: 'app-register',
@@ -12,10 +12,10 @@ import { User } from '../../models';
 export class RegisterComponent {
   @HostBinding('class.app-register') cssClass = true;
 
-  @Output() register: EventEmitter<Partial<User>>; // emits inputted `username` and `password` for new registration
+  @Output() register: EventEmitter<AuthForm>; // emits inputted `username` and `password` for new registration
   @Output() cancelRegistration: EventEmitter<void>; // sets `inRegisterMode` to false in parent container
 
-  public registerFormModel: Partial<User>; // model for registration template-driven form
+  public registerFormModel: AuthForm; // model for registration template-driven form
 
   constructor() {
     this.cancelRegistration = new EventEmitter();
