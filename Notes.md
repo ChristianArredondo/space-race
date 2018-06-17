@@ -3,6 +3,10 @@
 * ngx-bootstrap
 * alertifyjs
 
+# Study
+* Entity Framework
+* Kestrel
+* .NET
 
 # Section 3: Security
 
@@ -79,3 +83,24 @@ JWT Structure
 
 * add API error handling for Production env by use of middleware in `Startup.cs`
 * add new helper class `Extensions` for adding error-related headers
+
+# Section 8: Extending the API!
+
+## Overview
+* extending the User class
+* more migrations
+* cascade delete
+* seed data into Db
+* create new repo
+* using Automapper for DTOs
+
+## 67. Extending the User Model
+
+* we have to explicity describe new Db relationships to EntityFramework, otherwise it will assume
+  * i.e. if a User has a collection of Photos, does deleting a User mean the Photos also get deleted?
+
+## 68. Exploring Entity Framework Migrations
+  * command `dotnet ef migrations remove` removes the most recent migration
+  * `update` command not supported if columns are being removed
+
+## 69. Entity Framework Relationships
