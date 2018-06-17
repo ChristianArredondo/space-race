@@ -26,11 +26,11 @@
       </form>
       <ul *ngIf="isAuth" class="nav navbar-nav navbar-right">
         <li class="dropdown" dropdown>
-          <a href="#" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false" dropdownToggle> {{ authUsername }} <span class="caret"></span></a>
+          <a class="dropdown-toggle" aria-haspopup="true" aria-expanded="false" dropdownToggle> {{ authUsername }} <span class="caret"></span></a>
           <ul class="dropdown-menu" *dropdownMenu>
-            <li><a href="#"> <i class="fa fa-user"></i> Edit Profile</a></li>
+            <li><a> <i class="fa fa-user"></i> Edit Profile</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="#" (click)="logout.emit()"> <i class="fa fa-sign-out"></i> Logout</a></li>
+            <li><a (click)="logout.emit()"> <i class="fa fa-sign-out"></i> Logout</a></li>
           </ul>
         </li>
       </ul>

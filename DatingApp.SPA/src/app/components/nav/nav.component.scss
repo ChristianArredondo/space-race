@@ -2,6 +2,9 @@
   .logout:hover {
     cursor: pointer;
   }
+  .dropdown:hover {
+    cursor: pointer;
+  }
   // TODO. add Bootstrap overrides SCSS file at root app level
   @media (min-width: 768px) {
     .navbar {
