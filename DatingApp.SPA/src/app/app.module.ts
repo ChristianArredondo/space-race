@@ -16,6 +16,7 @@ import { AuthEffects } from './effects';
 import { ValueEffects } from './effects';
 // COMPONENTS
 import { HomeComponent, MemberListComponent, RegisterComponent } from './containers';
+import { ListsComponent } from './containers/lists/lists.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { HomeComponent, MemberListComponent, RegisterComponent } from './contain
     HomeComponent,
     RegisterComponent,
     MemberListComponent,
+    ListsComponent,
   ],
   imports: [
     BrowserModule,
