@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AlertifyService } from './alertify.service';
 import { ApiValuesService } from './api-values.service';
 import { ApiAuthService } from './api-auth.service';
+import { ApiUsersService  } from './api-users.service';
 
 @NgModule({
   imports: [
@@ -12,6 +13,6 @@ import { ApiAuthService } from './api-auth.service';
     HttpClientModule
   ],
   declarations: [],
-  providers: [AlertifyService, ApiValuesService, ApiAuthService]
+  providers: [AlertifyService, ApiValuesService, ApiAuthService, ApiUsersService]
 })
 export class ServicesModule { }

@@ -5,13 +5,15 @@ import {
   MetaReducer,
   ActionReducer
 } from '@ngrx/store';
+import { RouterStateSnapshot } from '@angular/router';
 // NGRX
 import * as fromValue from './value.reducer';
 import * as fromAuth from './auth.reducer';
+import * as fromRouter from '@ngrx/router-store';
 import { storageActions } from '../actions';
 import { localStorageSync, rehydrateApplicationState } from 'ngrx-store-localstorage';
 // MODELS
-import { DecodedToken } from '../models';
+import { DecodedToken, RouterState } from '../models';
 // ENV
 import { environment } from '../../environments/environment';
 // AUTH0
@@ -20,11 +22,13 @@ const jwtHelper = new JwtHelperService();
 
 export interface State {
   auth: fromAuth.State;
+  router: fromRouter.RouterReducerState<RouterState>;
   value: fromValue.State;
 }
 
 export const reducers: ActionReducerMap<State> = {
   auth: fromAuth.reducer,
+  router: fromRouter.routerReducer,
   value: fromValue.reducer,
 };
 
@@ -46,6 +50,30 @@ export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionRedu
       rehydrate: true,
     })(reducer)(state, action);
   };
+}
+
+// --------------------- ROUTER ---------------------
+export const getRouterState = (state: State) => state.router;
+export const getRouterSnapshotState = createSelector(
+  getRouterState,
+  snapshot => snapshot.state
+);
+export class CustomSerializer implements fromRouter.RouterStateSerializer<RouterState> {
+  serialize(routerState: RouterStateSnapshot): RouterState {
+    let route = routerState.root;
+    while (route.firstChild) {
+      route = route.firstChild;
+    }
+    const {
+      url,
+      root: { queryParams }
+    } = routerState;
+    const { params } = route;
+    const pathSections = url.split('/');
+    // create entity type from first path section, excluding params
+    const mainRoute = pathSections[1].match(/[^?]*/i)[0];
+    return { url, params, queryParams, mainRoute };
+  }
 }
 
 // ---------------- AUTH ----------------
