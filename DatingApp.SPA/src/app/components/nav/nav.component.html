@@ -11,9 +11,9 @@
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav" *ngIf="isAuth">
-        <li><a [routerLink]="['/members']">Matches</a></li>
-        <li><a [routerLink]="['/lists']">Lists</a></li>
-        <li><a [routerLink]="['/messages']">Messages</a></li>
+        <li routerLinkActive="active"><a [routerLink]="['/members']">Matches</a></li>
+        <li routerLinkActive="active"><a [routerLink]="['/lists']">Lists</a></li>
+        <li routerLinkActive="active"><a [routerLink]="['/messages']">Messages</a></li>
       </ul>
       <form *ngIf="!isAuth" class="navbar-form navbar-right" [formGroup]="authForm" (ngSubmit)="login.emit()">
         <div class="form-group">
