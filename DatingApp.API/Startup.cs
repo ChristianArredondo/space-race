@@ -88,6 +88,7 @@ namespace DatingApp.API
         - we need CORS policy to be evaluated before `UseMVC`
         - keep `UseMVC` last because this is what returns the request to the client
       */
+      // UNCOMMENT LINE BELOW TO RESET DB AND ADD SEED DATA ON INIT
       // seeder.SeedUsers();
       app.UseCors(CorsPolicyBuilder => CorsPolicyBuilder.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin().AllowCredentials());
       app.UseAuthentication();
