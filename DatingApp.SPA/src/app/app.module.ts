@@ -2,6 +2,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 // CORE PROJECT
 import { AppComponent } from './app.component';
 import { ComponentsModule } from './components';
@@ -16,6 +17,8 @@ import { AuthEffects } from './effects';
 import { ValueEffects } from './effects';
 // COMPONENTS
 import { HomeComponent, ListsComponent, MemberListComponent, MessagesComponent, RegisterComponent } from './containers';
+
+import { routes } from 'src/app/routes';
 
 @NgModule({
   declarations: [
@@ -34,6 +37,7 @@ import { HomeComponent, ListsComponent, MemberListComponent, MessagesComponent, 
     StoreModule.forRoot(reducers, { metaReducers }),
     EffectsModule.forRoot([AuthEffects, ValueEffects]),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
+    RouterModule.forRoot(routes, { useHash: false }),
     ServicesModule,
   ],
   providers: [],

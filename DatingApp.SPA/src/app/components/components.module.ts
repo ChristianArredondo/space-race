@@ -2,6 +2,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 // COMPONENTS
 import { NavComponent } from './nav';
 // NGX-BOOTSTRAP
@@ -15,7 +16,8 @@ const components = [NavComponent];
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    BsDropdownModule.forRoot()
+    BsDropdownModule.forRoot(),
+    RouterModule
   ],
   declarations: components,
   exports: components
