@@ -179,3 +179,25 @@ JWT Structure
 
 * create and implement new UsersController
 * add temporary ReferenceLoopError ignore
+
+## 74. Shaping the data to return with Dtos
+* create Dtos for mapping specific User properties to API response
+
+## 75. AutoMapper - Part 1
+
+* install AutoMapper using NuGet Package Manager
+* add IMapper depenency to UsersController and use to map responses
+
+## 76. AutoMapper - Part 2
+
+* add DTO for photos
+* update AutoMapper config for resolving age and photoUrl
+
+## 77. Module 8 Summary
+
+* extended User class with new props
+* created new Photo class and added new migration for it
+* investigated how migrations can be removed or how tables can be dropped
+* created app-wide repository for Users
+* created UsersController
+* used AutoMapper to map specific properties for Client response
