@@ -1,4 +1,12 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+// CORE ANGULAR
+import { Component, ChangeDetectionStrategy } from '@angular/core';
+// NGRX
+import { Store, select } from '@ngrx/store';
+import * as fromRoot from '../../store';
+// RXJS
+import { Observable } from 'rxjs';
+// MODELS
+import { User } from '../../models';
 
 @Component({
   selector: 'app-member-list',
@@ -6,11 +14,11 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   styleUrls: ['./member-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class MemberListComponent implements OnInit {
+export class MemberListComponent {
+  users$: Observable<User[]>;
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor(private _store$: Store<fromRoot.State>) {
+    this.users$ = this._store$.pipe(select(fromRoot.getAllUsers));
   }
 
 }

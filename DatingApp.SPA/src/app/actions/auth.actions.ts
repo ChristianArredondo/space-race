@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { User } from '../models';
+import { AuthForm, User } from '../models';
 
 export enum AuthActionTypes {
   Login = '[Auth] Login',
@@ -32,7 +32,7 @@ export class Logout implements Action {
 
 export class Register implements Action {
   readonly type = AuthActionTypes.Register;
-  constructor(public payload: Partial<User>) {}
+  constructor(public payload: AuthForm) {}
 }
 
 export class RegisterSuccess implements Action {

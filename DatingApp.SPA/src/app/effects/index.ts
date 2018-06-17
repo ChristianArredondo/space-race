@@ -1,2 +1,3 @@
 export { AuthEffects } from './auth.effects';
-export { ValueEffects} from './value.effects';
+export { RouterEffects } from './router.effects';
+export { UserEffects} from './users.effects';
