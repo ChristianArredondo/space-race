@@ -4,11 +4,12 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 // COMPONENTS
+import { MemberCardComponent } from './member-card';
 import { NavComponent } from './nav';
 // NGX-BOOTSTRAP
 import { BsDropdownModule } from 'ngx-bootstrap';
 
-const components = [NavComponent];
+const components = [MemberCardComponent, NavComponent];
 
 /** Feature module used to share presentational components */
 @NgModule({
