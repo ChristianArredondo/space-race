@@ -39,6 +39,7 @@ namespace DatingApp.API
       var key = Encoding.ASCII.GetBytes(Configuration.GetSection("AppSettings:Token").Value);
       services.AddDbContext<DataContext>(CotextOptionsBuilder => CotextOptionsBuilder.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
       services.AddMvc();
+      services.AddTransient<Seed>();
       services.AddCors();
       services.AddScoped<IAuthRepository, AuthRepository>();
       services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -55,7 +56,7 @@ namespace DatingApp.API
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-    public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+    public void Configure(IApplicationBuilder app, IHostingEnvironment env, Seed seeder)
     {
       if (env.IsDevelopment())
       {
@@ -82,6 +83,7 @@ namespace DatingApp.API
         - we need CORS policy to be evaluated before `UseMVC`
         - keep `UseMVC` last because this is what returns the request to the client
       */
+      // seeder.SeedUsers();
       app.UseCors(CorsPolicyBuilder => CorsPolicyBuilder.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin().AllowCredentials());
       app.UseAuthentication();
       app.UseMvc();

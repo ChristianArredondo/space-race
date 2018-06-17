@@ -139,4 +139,10 @@ JWT Structure
     }
   ]
 
-# 71. Seeding Data to Db - Part 2
+## 71. Seeding Data to Db - Part 2
+
+* use `System.IO.File.ReadAllText()` to read `UserSeedData.json` file and extract all users.
+* use `JsonConvert.DeserializeObject<List<USer>>()` to convert json to list of .NET type
+* create new `Seed` class with `SeedUsers()` method
+  * add new class as a Transient service to `Startup`
+  * perform seeding in middleware before adding CORS headers (when necessary)
