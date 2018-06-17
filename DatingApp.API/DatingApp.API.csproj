@@ -1,42 +1,17 @@
-<!--
-
-  `.csproj` file contains project settings and references to files used by the project;
-  saved in MSBuild format, which can be compiled into an executable program using the
-  MSBuild program. 
-
-    * run `dotnet restore` command to apply changes and make tools available.
-    
--->
-
 <Project Sdk="Microsoft.NET.Sdk.Web">
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
   </PropertyGroup>
-
   <ItemGroup>
-    <Folder Include="wwwroot\" />
+    <Folder Include="wwwroot\"/>
   </ItemGroup>
-
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.8" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.8"/>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="3.2.0"/>
   </ItemGroup>
-
   <ItemGroup>
-    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.4" />
-    <!-- Watcher.Tools allows us to run `dotnet watch run` for live reloading when source files are changed -->
-    <DotNetCliToolReference Include="Microsoft.DotNet.Watcher.Tools" Version="2.0.0" />
-    <!--
-
-      Entity Framework is an object relational mapper (O/RM) that enables .NET developers to work with a
-      database using .NET objects. It eliminates the need for most of the data-access code that is
-      typically needed.
-      
-      * run `dotnet ef` command to ensure tool is available (look for the unicorn!)
-      * run `dotnet ef migrations add InitialCreate` for inital adding
-      * run `dotnet ef database update` to update/create database
-
-    -->
-    <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.0" />
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.4"/>
+    <DotNetCliToolReference Include="Microsoft.DotNet.Watcher.Tools" Version="2.0.0"/>
+    <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.0"/>
   </ItemGroup>
-
 </Project>

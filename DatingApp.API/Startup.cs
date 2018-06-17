@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
 using DatingApp.API.Data;
 using DatingApp.API.Helpers;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -39,8 +40,11 @@ namespace DatingApp.API
       var key = Encoding.ASCII.GetBytes(Configuration.GetSection("AppSettings:Token").Value);
       services.AddDbContext<DataContext>(CotextOptionsBuilder => CotextOptionsBuilder.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
       services.AddMvc();
+      services.AddTransient<Seed>();
       services.AddCors();
+      services.AddAutoMapper();
       services.AddScoped<IAuthRepository, AuthRepository>();
+      services.AddScoped<ISpaceRaceRepository, SpaceRaceRepository>();
       services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         .AddJwtBearer(options =>
         {
@@ -52,10 +56,11 @@ namespace DatingApp.API
             ValidateAudience = false
           };
         });
+      services.AddMvc().AddJsonOptions(opt => opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-    public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+    public void Configure(IApplicationBuilder app, IHostingEnvironment env, Seed seeder)
     {
       if (env.IsDevelopment())
       {
@@ -65,7 +70,8 @@ namespace DatingApp.API
       {
         app.UseExceptionHandler(builder =>
         {
-          builder.Run(async context => {
+          builder.Run(async context =>
+          {
             context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
 
             var error = context.Features.Get<IExceptionHandlerFeature>();
@@ -82,6 +88,7 @@ namespace DatingApp.API
         - we need CORS policy to be evaluated before `UseMVC`
         - keep `UseMVC` last because this is what returns the request to the client
       */
+      // seeder.SeedUsers();
       app.UseCors(CorsPolicyBuilder => CorsPolicyBuilder.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin().AllowCredentials());
       app.UseAuthentication();
       app.UseMvc();
