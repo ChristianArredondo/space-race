@@ -12,10 +12,10 @@ export const initialState: State = adapter.getInitialState();
 
 export function reducer(
   state = initialState,
-  action: userActions.Actions
+  action: userActions.ActionsUnion
 ): State {
   switch (action.type) {
-    case userActions.ActionTypes.LoadUsersSuccess: {
+    case userActions.ActionTypes.FetchUsersSuccess: {
       /**
        * Use `adapter.addAll()` to replace previous
        * collection with newly-loaded collection.

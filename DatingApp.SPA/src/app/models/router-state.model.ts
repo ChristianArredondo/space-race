@@ -2,8 +2,8 @@
  import { Params } from '@angular/router';
 
 export interface RouterState {
-  params: Params;
-  queryParams: Params;
-  url: string;
-  mainRoute: string;
+  params: Params; // params
+  queryParams: Params; // query params
+  url: string; // full url
+  mainRoute: string; // first name in route (i.e. 'localhost:4200/members' resolves to 'members')
 }

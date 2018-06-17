@@ -12,6 +12,5 @@ import { User } from '../../models';
 export class MemberCardComponent {
   @HostBinding('class.app-member-cars') cssClass = true;
 
-  // User object
   @Input() user: User;
 }

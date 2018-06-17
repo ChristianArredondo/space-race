@@ -70,7 +70,7 @@ export class CustomSerializer implements fromRouter.RouterStateSerializer<Router
     } = routerState;
     const { params } = route;
     const pathSections = url.split('/');
-    // create entity type from first path section, excluding params
+    // use regex to ensure query params are not included in route name
     const mainRoute = pathSections[1].match(/[^?]*/i)[0];
     return { url, params, queryParams, mainRoute };
   }

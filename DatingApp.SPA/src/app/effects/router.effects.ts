@@ -23,9 +23,9 @@ export class RouterEffects {
 
   /** Load all users when '/members' route is activated */
   @Effect()
-  loadUsers$: Observable<Action> = this._activeRoute$.pipe(
+  loadUsersOnRoute$: Observable<Action> = this._activeRoute$.pipe(
     filter(route => route.mainRoute === 'members'),
-    map(() => new userActions.LoadUsers())
+    map(() => new userActions.FetchUsers())
   );
 
   constructor(private actions$: Actions) {}

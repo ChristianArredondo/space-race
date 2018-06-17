@@ -1,18 +1,26 @@
+// CORE ANGULAR
 import { Action } from '@ngrx/store';
+// MODELS
 import { User } from '../models';
 
 export enum ActionTypes {
-  LoadUsers = '[Value] Load Users',
-  LoadUsersSuccess = '[Value] Load Users Success'
+  FetchUsers = '[Users] Fetch Users',
+  FetchUsersSuccess = '[Users] Fetch Users Success',
+  FetchUsersError = '[Users] Fetch Users Error'
 }
 
-export class LoadUsers implements Action {
-  readonly type = ActionTypes.LoadUsers;
+export class FetchUsers implements Action {
+  readonly type = ActionTypes.FetchUsers;
 }
 
-export class LoadUsersSuccess implements Action {
-  readonly type = ActionTypes.LoadUsersSuccess;
+export class FetchUsersSuccess implements Action {
+  readonly type = ActionTypes.FetchUsersSuccess;
   constructor(public payload: User[] ) {}
 }
 
-export type Actions = LoadUsers | LoadUsersSuccess;
+export class FetchUsersError implements Action {
+  readonly type = ActionTypes.FetchUsersError;
+  constructor(public payload: any) {}
+}
+
+export type ActionsUnion = FetchUsers | FetchUsersSuccess | FetchUsersError;
