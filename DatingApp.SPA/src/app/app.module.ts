@@ -15,14 +15,14 @@ import { reducers, metaReducers } from './store';
 import { AuthEffects } from './effects';
 import { ValueEffects } from './effects';
 // COMPONENTS
-import { HomeComponent } from './home';
-import { RegisterComponent } from './register';
+import { HomeComponent, MemberListComponent, RegisterComponent } from './containers';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     RegisterComponent,
+    MemberListComponent,
   ],
   imports: [
     BrowserModule,

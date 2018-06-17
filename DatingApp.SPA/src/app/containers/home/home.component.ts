@@ -2,9 +2,9 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 // NGRX
 import { Store, select } from '@ngrx/store';
-import * as fromRoot from '../store';
+import * as fromRoot from '../../store';
 import { Observable } from 'rxjs';
-import { Value, User } from '../models';
+import { Value, User } from '../../models';
 import { authActions } from 'src/app/actions';
 // RXJS
 
