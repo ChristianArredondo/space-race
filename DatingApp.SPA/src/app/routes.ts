@@ -17,22 +17,19 @@ export const routes: Route[] = [
     component: HomeComponent
   },
   {
-    path: '',
-    canActivate: [AuthGuard],
-    children: [
-      {
-        path: 'members',
-        component: MemberListComponent,
-      },
-      {
-        path: 'messages',
-        component: MessagesComponent
-      },
-      {
-        path: 'lists',
-        component: ListsComponent
-      },
-    ]
+    path: 'members',
+    component: MemberListComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'messages',
+    component: MessagesComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'lists',
+    component: ListsComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: '**',

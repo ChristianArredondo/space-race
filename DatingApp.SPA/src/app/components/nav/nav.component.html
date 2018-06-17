@@ -26,6 +26,7 @@
       </form>
       <ul *ngIf="isAuth" class="nav navbar-nav navbar-right">
         <li class="dropdown" dropdown>
+          <!-- TODO. ensure dropdown is keyboard accessible -->
           <a class="dropdown-toggle" aria-haspopup="true" aria-expanded="false" dropdownToggle> {{ authUsername }} <span class="caret"></span></a>
           <ul class="dropdown-menu" *dropdownMenu>
             <li><a> <i class="fa fa-user"></i> Edit Profile</a></li>
