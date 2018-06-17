@@ -54,6 +54,7 @@ namespace DatingApp.API
             ValidateAudience = false
           };
         });
+      services.AddMvc().AddJsonOptions(opt => opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -153,3 +153,8 @@ JWT Structure
 * create new interface for app/users repository
 * create new class implementation of ISpaceRaceRepository
 * make service available by use of `services.AddScoped()` within `Startup`
+
+## 73. Creating the Users Controller
+
+* create and implement new UsersController
+* add temporary ReferenceLoopError ignore
