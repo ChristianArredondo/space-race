@@ -1,10 +1,9 @@
 // CORE ANGULAR
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 // NGRX
-import { Store, select } from '@ngrx/store';
+import { Store } from '@ngrx/store';
 import * as fromRoot from '../../store';
-import { Observable } from 'rxjs';
-import { AuthForm, Value } from '../../models';
+import { AuthForm } from '../../models';
 import { authActions } from 'src/app/actions';
 // RXJS
 
@@ -16,10 +15,8 @@ import { authActions } from 'src/app/actions';
 })
 export class HomeComponent {
   public inRegisterMode = false; // determined whether to show register form
-  public values$: Observable<Value[]>; // values fetched from server
 
   constructor(private _store$: Store<fromRoot.State>) {
-    this.values$ = this._store$.pipe(select(fromRoot.getAllValues));
   }
 
   public toggleRegisterMode() {

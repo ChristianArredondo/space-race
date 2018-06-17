@@ -14,7 +14,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { RouterStateSerializer, StoreRouterConnectingModule } from '@ngrx/router-store';
 import { CustomSerializer, metaReducers, reducers } from './store';
-import { AuthEffects, RouterEffects, ValueEffects } from './effects';
+import { AuthEffects, RouterEffects, UserEffects } from './effects';
 // COMPONENTS
 import { HomeComponent, ListsComponent, MemberListComponent, MessagesComponent, RegisterComponent } from './containers';
 
@@ -36,7 +36,7 @@ import { routes } from 'src/app/routes';
     ReactiveFormsModule,
     StoreModule.forRoot(reducers, { metaReducers }),
     StoreRouterConnectingModule,
-    EffectsModule.forRoot([AuthEffects, RouterEffects, ValueEffects]),
+    EffectsModule.forRoot([AuthEffects, RouterEffects, UserEffects]),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     RouterModule.forRoot(routes, { useHash: false }),
     ServicesModule,

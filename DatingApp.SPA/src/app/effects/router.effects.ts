@@ -1,10 +1,13 @@
 // CORE ANGULAR
 import { Injectable } from '@angular/core';
 // NGRX
-import { Actions, ofType } from '@ngrx/effects';
+import { Actions, ofType, Effect } from '@ngrx/effects';
+import { Action } from '@ngrx/store';
 import { ROUTER_NAVIGATION, RouterNavigationAction } from '@ngrx/router-store';
+import { userActions } from '../actions';
 // RXJS
-import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { map, filter } from 'rxjs/operators';
 // MODELS
 import { RouterState } from '../models';
 
@@ -12,13 +15,18 @@ import { RouterState } from '../models';
 @Injectable()
 export class RouterEffects {
 
-  // single reference to mapped active route
+  /** Provide single reference to mapped active RouterState */
   private _activeRoute$ = this.actions$.pipe(
     ofType(ROUTER_NAVIGATION),
     map((action: RouterNavigationAction<RouterState>) => action.payload.routerState)
   );
 
-  // @Effect()
+  /** Load all users when '/members' route is activated */
+  @Effect()
+  loadUsers$: Observable<Action> = this._activeRoute$.pipe(
+    filter(route => route.mainRoute === 'members'),
+    map(() => new userActions.LoadUsers())
+  );
 
   constructor(private actions$: Actions) {}
 }

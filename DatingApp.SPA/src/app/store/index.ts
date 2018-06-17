@@ -7,7 +7,7 @@ import {
 } from '@ngrx/store';
 import { RouterStateSnapshot } from '@angular/router';
 // NGRX
-import * as fromValue from './value.reducer';
+import * as fromUsers from './users.reducer';
 import * as fromAuth from './auth.reducer';
 import * as fromRouter from '@ngrx/router-store';
 import { storageActions } from '../actions';
@@ -23,13 +23,13 @@ const jwtHelper = new JwtHelperService();
 export interface State {
   auth: fromAuth.State;
   router: fromRouter.RouterReducerState<RouterState>;
-  value: fromValue.State;
+  users: fromUsers.State;
 }
 
 export const reducers: ActionReducerMap<State> = {
   auth: fromAuth.reducer,
   router: fromRouter.routerReducer,
-  value: fromValue.reducer,
+  users: fromUsers.reducer,
 };
 
 export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
@@ -87,9 +87,15 @@ export const getAuthUsername = createSelector(getAuthToken, getIsAuth, (token, i
   }
 });
 
-// ---------------- VALUES ----------------
-export const getValuesState = (state: State) => state.value;
-export const getAllValues = createSelector(getValuesState, fromValue.selectAll);
+// ---------------- Users ----------------
+export const getUsersState = (state: State) => state.users;
+export const {
+  selectIds: getUserIds,
+  selectEntities: getUserEntities,
+  selectAll: getAllUsers,
+  selectTotal: getUsersTotal
+} = fromUsers.adapter.getSelectors();
+
 
 
 export const metaReducers: MetaReducer<State>[] = !environment.production ? [localStorageSyncReducer] : [localStorageSyncReducer];

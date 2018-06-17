@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AlertifyService } from './alertify.service';
-import { ApiValuesService } from './api-values.service';
 import { ApiAuthService } from './api-auth.service';
 import { ApiUsersService  } from './api-users.service';
 
@@ -13,6 +12,6 @@ import { ApiUsersService  } from './api-users.service';
     HttpClientModule
   ],
   declarations: [],
-  providers: [AlertifyService, ApiValuesService, ApiAuthService, ApiUsersService]
+  providers: [AlertifyService, ApiUsersService, ApiAuthService, ApiUsersService]
 })
 export class ServicesModule { }

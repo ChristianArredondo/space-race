@@ -1,10 +1,8 @@
 // CORE ANGULAR
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-// ENV
-import { environment } from '../../environments/environment';
-// RXJS
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
+// RXJS
 import { catchError } from 'rxjs/operators';
 // MODELS
 import { User } from '../models';
@@ -13,13 +11,18 @@ import { User } from '../models';
   providedIn: 'root'
 })
 export class ApiUsersService {
-  apiLocation = environment.apiUrl;
+  private _apiLocation: string;
 
-  constructor(private _http: HttpClient) { }
+  constructor(private _http: HttpClient) {
+    this._apiLocation = 'http://localhost:5000/api/users';
+  }
 
-  get(): Observable<User[]> {
-    return this._http.get<User[]>(`${this.apiLocation}/users`).pipe(
-      catchError(error => throwError(error))
+  /** Fetches list of Users from server */
+  get(token: string): Observable<User[]> {
+    const accessToken = `Bearer ${token}`;
+    const headers = new HttpHeaders({ Authorization: accessToken });
+    return this._http.get<User[]>(this._apiLocation, { headers }).pipe(
+      catchError(err => throwError(err))
     );
   }
 }
