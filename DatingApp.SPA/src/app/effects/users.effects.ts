@@ -20,7 +20,7 @@ export class UserEffects {
     ofType(userActions.ActionTypes.LoadUsers),
     withLatestFrom(this._store$.pipe(select(fromRoot.getAuthToken))),
     switchMap(([action, token]) => this._apiService.get(token).pipe(
-      map(values => new userActions.LoadUsersSuccess(values))
+      map(users => new userActions.LoadUsersSuccess(users))
     ))
   );
 

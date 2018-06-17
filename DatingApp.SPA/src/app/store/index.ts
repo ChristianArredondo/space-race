@@ -87,14 +87,14 @@ export const getAuthUsername = createSelector(getAuthToken, getIsAuth, (token, i
   }
 });
 
-// ---------------- Users ----------------
+// ---------------- USERS ----------------
 export const getUsersState = (state: State) => state.users;
 export const {
   selectIds: getUserIds,
   selectEntities: getUserEntities,
   selectAll: getAllUsers,
   selectTotal: getUsersTotal
-} = fromUsers.adapter.getSelectors();
+} = fromUsers.adapter.getSelectors(getUsersState);
 
 
 
