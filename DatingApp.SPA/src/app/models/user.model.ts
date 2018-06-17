@@ -3,16 +3,16 @@ import { Photo } from './photo.model';
 export interface User {
   id: number;
   username: string;
-  gender: string;
   age: number;
-  knownAs: string;
-  created: Date;
-  lastActive: Date;
   city: string;
   country: string;
-  photoUrl: string;
+  created: Date;
+  gender: string;
+  knownAs: string;
+  lastActive: Date;
   interests?: string;
   introduction?: string;
   lookingFor?: string;
   photos?: Photo[];
+  photoUrl?: string;
 }
