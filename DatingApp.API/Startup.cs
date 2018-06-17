@@ -42,6 +42,7 @@ namespace DatingApp.API
       services.AddTransient<Seed>();
       services.AddCors();
       services.AddScoped<IAuthRepository, AuthRepository>();
+      services.AddScoped<ISpaceRaceRepository, SpaceRaceRepository>();
       services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         .AddJwtBearer(options =>
         {
