@@ -1,10 +1,10 @@
 # Space Race (Dating App)
 
-A web application built for learning purposes -- follows the Udemy tutorial [Build an app with ASPNET Core and Angular from scratch](https://www.udemy.com/build-an-app-with-aspnet-core-and-angular-from-scratch/learn/v4/content). 
+A web application built for learning purposes that follows the Udemy tutorial [Build an app with ASPNET Core and Angular from scratch](https://www.udemy.com/build-an-app-with-aspnet-core-and-angular-from-scratch/learn/v4/content). 
 
 Space Race is a dating site where users can try to find matching partners, but with an "outer space" theme.
 
-While the server follows the Udemy tutorial 100%, the client application deviates from the tutorial by using Angular 6 instead of 5, and by implement NGRX for state management. The complete tech stack and tools are as follows:
+While the server follows the Udemy tutorial 100%, the client application deviates from the tutorial by using Angular 6 instead of 5, and by implementing NGRX for state management. The complete tech stack and tools are as follows:
 
 ### Server:
 
@@ -13,8 +13,6 @@ While the server follows the Udemy tutorial 100%, the client application deviate
 * [SQLite Browser 3.10.1](https://sqlitebrowser.org/) for inspecting the Db
 
 ### Client:
-
-Built with [@angular/cli](https://github.com/angular/angular-cli) and [@ngrx/schematics](https://github.com/ngrx/platform/blob/master/docs/schematics/README.md)
 
 * [Angular 6](https://angular.io/) as the front-end framework (tutorial uses Angular 5)
 * [NGRX 6](https://github.com/ngrx/platform) for state management (tutorial does not use NGRX)
@@ -25,13 +23,18 @@ Built with [@angular/cli](https://github.com/angular/angular-cli) and [@ngrx/sch
 * [Bootswatch 3.3.7](https://bootswatch.com/) for Bootstrap theming
 * [NodeJS]() for installing client dependencies
 
+Client app was built with [@angular/cli](https://github.com/angular/angular-cli) and [@ngrx/schematics](https://github.com/ngrx/platform/blob/master/docs/schematics/README.md)
+
 ### Source Control
 * git and Github
 
 ## Getting Started
 ```bash
 # Clone the repository
-git clone https://github.com/ngrx/platform.git
+git clone https://github.com/ChristianArredondo/dating-app-ng-dotnet.git
+
+# Go to the project directory
+cd dating-app-ng-dotnet
 __________________
 
 # STARTING THE SERVER & DB
@@ -39,20 +42,22 @@ __________________
 # Go to the DatingApp.API directory
 cd DatingApp.API
 
+# Build .NET project
+dotnet build
+
 # Run command to create Db
 dotnet ef database update
 
-# Add seed data
+# Adding seed data
 open `Startup.cs` file
-
-# Uncomment line 92
-seeder.SeedUsers();
-# line can be commented back out for any future server starts
+uncomment line 91: seeder.SeedUsers();
+# this command clears Users table and adds seed data
 
 # Start API server
 dotnet watch run
 
 # You should see a populated Photos and Users table if you open Db with SQLite
+# Line 91 in `Startup.cs` can be re-commented out for any future server starts
 __________________
 
 # STARTING THE CLIENT
@@ -60,16 +65,16 @@ __________________
 # Go to the DatingApp.SPA directory
 cd DatingApp.SPA
 
-# Install dependencies
-# using NPM:
+# Install dependencies using NPM or yarn
+# NPM
 npm install
-# using yarn:
+# yarn
 yarn
 
-# Start dev client server
-# using NPM
+# Start dev client server using NPM or yarn
+# NPM
 npm run start
-# using yarn
+# yarn
 yarn start
 
 ```
@@ -82,3 +87,11 @@ Once you register and see a success alert, you can then sign in using your new u
 
 ## Disclaimer
 This is the first time I ever worked with C#, .NET Core, and the Entity Framework.
+
+## Screenshots
+
+### Homepage
+![homepage](https://i.imgur.com/SxCBEK8.png)
+
+### Auth-Protected Members Page
+![members page](https://i.imgur.com/AQDr2s8.png)
