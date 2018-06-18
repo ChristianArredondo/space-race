@@ -1,3 +1,5 @@
+Personal notes that I took throughout the tutorial.
+
 # Libraries
 * auth0/angular-jwt
 * ngx-bootstrap
@@ -16,6 +18,7 @@
 saved in MSBuild format, which can be compiled into an executable program using the
 MSBuild program. 
 
+* run `dotnet build` to build any newly-added project (kind of like yarn)
 * run `dotnet restore` command to apply changes and make tools available.
 * Watcher.Tools allows us to run `dotnet watch run` for live reloading when source files are changed
 
