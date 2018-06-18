@@ -31,7 +31,7 @@ Client app was built with [@angular/cli](https://github.com/angular/angular-cli)
 ## Getting Started
 ```bash
 # Clone the repository
-git clone https://github.com/ChristianArredondo/dating-app-ng-dotnet.git
+git clone https://github.com/ChristianArredondo/space-race.git
 
 # Go to the project directory
 cd dating-app-ng-dotnet
