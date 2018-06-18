@@ -1,4 +1,4 @@
-# Space Race (Dating App)
+# Space Race
 
 Space Race is a dating site where users can try to find matching partners, but with an "outer space" theme.
 
