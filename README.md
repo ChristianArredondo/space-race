@@ -2,7 +2,19 @@
 
 Space Race is a dating site where users can try to find matching partners, but with an "outer space" theme.
 
-This web application was built for learning purposes and follows the Udemy tutorial [Build an app with ASPNET Core and Angular from scratch](https://www.udemy.com/build-an-app-with-aspnet-core-and-angular-from-scratch/learn/v4/). 
+This web application was built for learning purposes and follows the Udemy tutorial [Build an app with ASPNET Core and Angular from scratch](https://www.udemy.com/build-an-app-with-aspnet-core-and-angular-from-scratch/learn/v4/).
+
+The current site functionality includes:
+* registration
+* sign-in
+* token storage and authorization
+* protected routes
+* fetching of users
+
+Functionality to be added:
+* photos
+* messages
+* updating profile
 
 While the server follows the Udemy tutorial 100%, the client application deviates from the tutorial by using Angular 6 instead of 5, and by implementing NGRX for state management. The complete tech stack and tools are as follows:
 

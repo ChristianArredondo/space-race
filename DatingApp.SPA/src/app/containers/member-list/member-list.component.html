@@ -1,9 +1,10 @@
 <div class="container">
   <div class="row">
+    <!-- TODO. add trackBy -->
     <div *ngFor="let user of (users$ | async)" class="col-lg-2 col-md-3 col-sm-6">
       <!--
-          - temporary *ngIf to only show users with a profile pic
-          - (there's currently no method in place for uploading pictures)
+        - temporary *ngIf to only show users with a profile pic
+        - (there's currently no method in place for uploading pictures)
       -->
       <app-member-card *ngIf="user.photoUrl" [user]="user"></app-member-card>
     </div>
