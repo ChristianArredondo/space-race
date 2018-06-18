@@ -1,8 +1,8 @@
 # Space Race (Dating App)
 
-A web application built for learning purposes that follows the Udemy tutorial [Build an app with ASPNET Core and Angular from scratch](https://www.udemy.com/build-an-app-with-aspnet-core-and-angular-from-scratch/learn/v4/content). 
-
 Space Race is a dating site where users can try to find matching partners, but with an "outer space" theme.
+
+This web application was built for learning purposes and follows the Udemy tutorial [Build an app with ASPNET Core and Angular from scratch](https://www.udemy.com/build-an-app-with-aspnet-core-and-angular-from-scratch/learn/v4/content). 
 
 While the server follows the Udemy tutorial 100%, the client application deviates from the tutorial by using Angular 6 instead of 5, and by implementing NGRX for state management. The complete tech stack and tools are as follows:
 
@@ -21,7 +21,7 @@ While the server follows the Udemy tutorial 100%, the client application deviate
 * [Auth0 Angular JWT 2.0](https://github.com/auth0/angular2-jwt) for JWT utilities
 * [ngx-bootstrap 3.3.7](https://valor-software.com/ngx-bootstrap/#/getting-started) for JS-related Bootstrap requirements
 * [Bootswatch 3.3.7](https://bootswatch.com/) for Bootstrap theming
-* [NodeJS]() for installing client dependencies
+* [NodeJS 9.10.1](https://nodejs.org/en/) for installing client dependencies
 
 Client app was built with [@angular/cli](https://github.com/angular/angular-cli) and [@ngrx/schematics](https://github.com/ngrx/platform/blob/master/docs/schematics/README.md)
 
